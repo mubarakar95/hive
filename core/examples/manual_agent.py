@@ -16,7 +16,9 @@ import asyncio
 
 from framework.graph import EdgeCondition, EdgeSpec, Goal, GraphSpec, NodeSpec
 from framework.graph.executor import GraphExecutor
+from framework.graph.executor import GraphExecutor
 from framework.runtime.core import Runtime
+from framework.graph.visualize import graph_to_mermaid
 
 
 # 1. Define Node Logic (Pure Python Functions)
@@ -102,6 +104,11 @@ async def main():
     # Connect string names in NodeSpecs to actual Python functions
     executor.register_function("greeter", greet)
     executor.register_function("uppercaser", uppercase)
+
+    # 7.5 Visualize Graph
+    print("\n📊 Graph Visualization (Mermaid):")
+    print(graph_to_mermaid(graph))
+    print("-" * 40)
 
     # 8. Execute Agent
     print("▶ Executing agent with input: name='Alice'...")
